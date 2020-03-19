@@ -1,0 +1,15 @@
+version: '1.0.{build}'
+environment:
+  nodeJs_version: "stable"
+services:
+  - mongodb
+before_test:
+  - cmd: PATH=C:\Program Files (x86)\nodejs;C:\Users\appveyor\AppData\roaming\npm;C:\mongodb
+install:
+  - ps: Install-Product node $env:nodeJs_version
+test_script:
+  - node --version
+  - npm --version
+  - npm install
+  - cmd: copy .env.appveyor .env
+  - cmd: npm run test:windows
