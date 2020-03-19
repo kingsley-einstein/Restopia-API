@@ -13,3 +13,4 @@ test_script:
   - npm install
   - cmd: copy .env.appveyor .env
   - cmd: npm run test:windows
+build: off
