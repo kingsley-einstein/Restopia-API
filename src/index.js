@@ -3,13 +3,9 @@ const mongoose = require("mongoose");
 const app = express();
 const config = require("./config");
 const { port, db } = require("./env");
-const opts = {
-  statics: express.static,
-  json: express.json
-};
 
 const configure = (cb) => {
-  cb(require("morgan"), opts);
+  cb(require("morgan"), express);
 };
 
 configure(config(app));

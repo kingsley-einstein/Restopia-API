@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nyc mocha src/tests/*.test.js -R spec --timeout 30000 --exit",
     "start:dev": "set NODE_ENV=development&& nodemon src/index",
-    "start:prod": "export NODE_ENV=production && node src/index",
+    "start:prod": "export NODE_ENV=production && export PORT=80 && node src/index",
     "test:windows": "set NODE_ENV=test&& npm test",
     "test:unix": "export NODE_ENV=test && npm test"
   },
