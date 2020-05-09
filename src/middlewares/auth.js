@@ -22,6 +22,25 @@ class Auth {
     }
   }
 
+  static async checkIfUserExists(req, res, next) {
+    try {
+      const { email } = req.body;
+      const userExists = await User.findOne({ email });
+      if(userExists) {
+        return res.status(400).json({
+          code: 400,
+          data: `User with email ${email} already registered`
+        });
+      }
+      next();
+    } catch (error) {
+      res.status(500).json({
+        code: 500,
+        data: error
+      });
+    }
+  }
+
   static async checkToken(req, res, next) {
     try {
       const { authorization } = req.headers;

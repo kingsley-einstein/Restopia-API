@@ -7,6 +7,7 @@ const router = Router();
 router.post(
   "/",
   Auth.checkKeys,
+  Auth.checkIfUserExists,
   UserController.createAccount
 );
 
